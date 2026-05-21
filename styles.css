@@ -385,7 +385,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: calc(80px + var(--space-xl)) var(--section-px) var(--space-xl);
+    padding: calc(80px + clamp(20px, 4vh, 60px)) var(--section-px) clamp(20px, 4vh, 60px);
     overflow: hidden;
 }
 
@@ -417,49 +417,53 @@ a {
 }
 
 .hero-content .eyebrow {
-    margin-bottom: var(--space-md);
+    margin-bottom: clamp(12px, 2vh, 24px);
 }
 
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(2.6rem, 6vw, 5.5rem);
+    font-size: clamp(2.2rem, 4.2vw + 1.8vh, 4.8rem);
     font-weight: 300;
     line-height: 0.92;
     color: var(--color-white-soft);
-    margin-bottom: var(--space-lg);
+    margin-bottom: clamp(16px, 3vh, 32px);
 }
 
 .hero-subtitle {
     font-family: var(--font-body);
-    font-size: clamp(0.88rem, 1.2vw, 1.05rem);
+    font-size: clamp(0.88rem, 0.9vw + 0.6vh, 1.05rem);
     font-weight: 300;
     color: var(--color-mist);
     max-width: min(520px, 90%);
-    margin-bottom: var(--space-xl);
-    line-height: 1.75;
+    margin-bottom: clamp(20px, 4vh, 48px);
+    line-height: 1.6;
 }
 
 /* Hero responsive adjustments */
 @media (max-width: 640px) {
     .hero {
-        padding-top: calc(70px + var(--space-lg));
-        padding-bottom: var(--space-lg);
+        padding-top: calc(70px + clamp(12px, 3vh, 24px));
+        padding-bottom: clamp(16px, 3vh, 32px);
         justify-content: flex-end;
     }
 
     .hero-title {
-        font-size: clamp(2.2rem, 10vw, 3rem);
+        font-size: clamp(1.8rem, 8vw + 1vh, 2.8rem);
         line-height: 0.95;
+        margin-bottom: clamp(12px, 2vh, 20px);
     }
 
     .hero-subtitle {
         max-width: 100%;
+        margin-bottom: clamp(16px, 3vh, 28px);
+        font-size: 0.88rem;
+        line-height: 1.5;
     }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
     .hero-title {
-        font-size: clamp(2.8rem, 5.5vw, 4rem);
+        font-size: clamp(2.6rem, 5vw + 1vh, 3.8rem);
     }
 }
 
