@@ -326,6 +326,12 @@ a {
     transition: background 400ms ease;
 }
 
+@media (max-width: 767px) {
+    .navbar {
+        justify-content: center;
+    }
+}
+
 .navbar-logo img {
     height: 36px;
     width: auto;
