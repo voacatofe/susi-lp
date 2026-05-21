@@ -330,6 +330,11 @@ a {
     .navbar {
         justify-content: center;
     }
+    .navbar-logo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
 }
 
 .navbar-logo img {
