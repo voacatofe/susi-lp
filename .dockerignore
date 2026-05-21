@@ -4,7 +4,6 @@
 *.png
 !images/*.png
 Dockerfile
-nginx.conf
 .gemini/
 .system_generated/
 .tempmediaStorage/
