@@ -1,0 +1,5 @@
+.gemini/
+.system_generated/
+.tempmediaStorage/
+*metadata.json
+screenshot.png
