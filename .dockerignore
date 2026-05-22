@@ -3,6 +3,8 @@
 *.md
 *.png
 !images/*.png
+!favicon.png
+!favicon.ico
 Dockerfile
 .gemini/
 .system_generated/
