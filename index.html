@@ -308,7 +308,7 @@
         document.addEventListener("DOMContentLoaded", () => {
             // Dynamic WhatsApp URL injection from env var
             const envWhatsappUrl = "__WHATSAPP_URL__";
-            const defaultWhatsappUrl = "https://wa.me/";
+            const defaultWhatsappUrl = "https://wa.me/555191625982?text=Ol%C3%A1%21%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es%20e%20iniciar%20a%20minha%20triagem%20para%20o%20Grupo%20de%20Fundadoras%20do%20est%C3%BAdio%20Susi%20Alves%20Zona%20Sul.";
             const finalUrl = (envWhatsappUrl && !envWhatsappUrl.startsWith("__")) ? envWhatsappUrl : defaultWhatsappUrl;
             
             document.querySelectorAll('a[href="__WHATSAPP_URL__"]').forEach(link => {
