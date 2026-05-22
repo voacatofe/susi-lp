@@ -35,7 +35,7 @@
             <li><a href="#metodo">Método</a></li>
             <li><a href="#contato">Contato</a></li>
         </ul>
-        <a href="#admissao" class="btn-secondary navbar-cta">Grupo Fundadoras</a>
+        <a href="__WHATSAPP_URL__" target="_blank" class="btn-secondary navbar-cta">Grupo Fundadoras</a>
     </nav>
 
     <!-- ============================
@@ -56,7 +56,7 @@
             <p class="hero-subtitle">
                 Um grupo restrito com acesso prioritário à nova unidade e acompanhamento ultra-personalizado diretamente comigo antes da abertura oficial.
             </p>
-            <a href="#admissao" class="btn-primary">Aplicar como Fundadora</a>
+            <a href="__WHATSAPP_URL__" target="_blank" class="btn-primary">Aplicar como Fundadora</a>
         </div>
     </section>
 
@@ -244,7 +244,7 @@
                 Durante esta fase de lançamento, as participantes admitidas no <strong>Grupo Fundadoras</strong> garantem as condições especiais de fundação de forma vitalícia enquanto mantiverem seus planos ativos.
             </p>
             <div class="admissao-cta-wrapper">
-                <a href="https://wa.me/" target="_blank" class="btn-primary">Iniciar Triagem Pessoal no WhatsApp</a>
+                <a href="__WHATSAPP_URL__" target="_blank" class="btn-primary">Iniciar Triagem Pessoal no WhatsApp</a>
             </div>
         </div>
     </section>
@@ -270,7 +270,7 @@
             <p class="cta-final-subtitle">
                 As vagas para o Grupo Fundadoras são estritamente limitadas para garantir o rigor técnico e o conforto de cada atendimento. Entre em contato e agende a tua conversa de triagem.
             </p>
-            <a href="https://wa.me/" target="_blank" class="btn-primary">Quero Assegurar Meu Espaço no Grupo</a>
+            <a href="__WHATSAPP_URL__" target="_blank" class="btn-primary">Quero Assegurar Meu Espaço no Grupo</a>
             <p class="cta-final-hint">Clique para abrir nosso canal de atendimento exclusivo e iniciar a tua triagem.</p>
         </div>
     </section>
@@ -303,6 +303,15 @@
          ============================ -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Dynamic WhatsApp URL injection from env var
+            const envWhatsappUrl = "__WHATSAPP_URL__";
+            const defaultWhatsappUrl = "https://wa.me/";
+            const finalUrl = (envWhatsappUrl && !envWhatsappUrl.startsWith("__")) ? envWhatsappUrl : defaultWhatsappUrl;
+            
+            document.querySelectorAll('a[href="__WHATSAPP_URL__"]').forEach(link => {
+                link.href = finalUrl;
+            });
+
             // Scroll Reveal Observer
             const observer = new IntersectionObserver(
                 (entries) => {
