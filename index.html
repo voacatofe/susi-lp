@@ -27,6 +27,14 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css?v=1.0.1">
+    <noscript>
+        <style>
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        </style>
+    </noscript>
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -320,7 +328,8 @@
          SCROLL REVEAL & POLE INDICATOR SCRIPTS
          ============================ -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        // Executado imediatamente (rodapé do body) para inicializar instantaneamente sem esperar DOMContentLoaded (evita telas em branco por conta de trackers lentos)
+        (function() {
             // Dynamic WhatsApp URL injection from env var
             const envWhatsappUrl = "__WHATSAPP_URL__";
             const defaultWhatsappUrl = "https://wa.me/555191625982?text=Ol%C3%A1%21%20Gostaria%20de%20receber%20mais%20informa%C3%A7%C3%B5es%20e%20iniciar%20a%20minha%20triagem%20para%20o%20Grupo%20de%20Fundadoras%20do%20est%C3%BAdio%20Susi%20Alves%20Zona%20Sul.";
@@ -330,24 +339,33 @@
                 link.href = finalUrl;
             });
 
-            // Scroll Reveal Observer
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("is-visible");
-                        }
-                    });
-                },
-                {
-                    threshold: 0.1,
-                    rootMargin: "0px 0px -40px 0px",
-                }
-            );
+            const revealElements = document.querySelectorAll(".reveal");
 
-            document.querySelectorAll(".reveal").forEach((el) => {
-                observer.observe(el);
-            });
+            // Fallback imediato caso o navegador não tenha suporte a IntersectionObserver
+            if (!window.IntersectionObserver) {
+                revealElements.forEach((el) => {
+                    el.classList.add("is-visible");
+                });
+            } else {
+                // Scroll Reveal Observer
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.05, // Menor threshold para carregar mais rápido ao rolar a página
+                        rootMargin: "0px 0px -20px 0px",
+                    }
+                );
+
+                revealElements.forEach((el) => {
+                    observer.observe(el);
+                });
+            }
 
             // Scroll indicator (vertical pole tracker)
             const indicatorBar = document.querySelector(".pole-scroll-indicator-bar");
@@ -359,10 +377,19 @@
                     indicatorBar.style.height = `${scrollPercent}%`;
                 };
                 
-                window.addEventListener("scroll", updateIndicator);
+                window.addEventListener("scroll", updateIndicator, { passive: true });
                 updateIndicator(); // run initially
             }
-        });
+
+            // Temporizador de segurança: após 1.8 segundos, força a visibilidade de todos os blocos caso ocorra lentidão/falha de carregamento de trackers externos
+            setTimeout(() => {
+                revealElements.forEach((el) => {
+                    if (!el.classList.contains("is-visible")) {
+                        el.classList.add("is-visible");
+                    }
+                });
+            }, 1800);
+        })();
     </script>
 
 </body>

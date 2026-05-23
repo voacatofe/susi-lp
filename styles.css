@@ -411,10 +411,14 @@ a {
     opacity: 0.32;
     mix-blend-mode: luminosity;
     filter: contrast(1.1) brightness(0.85);
-    
-    /* Fade both edges to blend with the background color */
-    mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+@media (min-width: 769px) {
+    .hero-bg img {
+        /* Fade both edges to blend with the background color */
+        mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+    }
 }
 
 .hero-bg .image-overlay {
@@ -458,8 +462,6 @@ a {
         opacity: 0.62; /* Reforça presença da foto no mobile */
         mix-blend-mode: normal;
         filter: contrast(1.02) brightness(0.92);
-        mask-image: none;
-        -webkit-mask-image: none;
     }
 }
 
