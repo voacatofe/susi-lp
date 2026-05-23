@@ -454,8 +454,10 @@ a {
 /* Hero responsive adjustments */
 @media (max-width: 768px) {
     .hero-bg img {
-        object-position: right center;
-        opacity: 0.45; /* Aumenta a visibilidade da modelo no mobile */
+        object-position: center 28%;
+        opacity: 0.62; /* Reforça presença da foto no mobile */
+        mix-blend-mode: normal;
+        filter: contrast(1.02) brightness(0.92);
         mask-image: none;
         -webkit-mask-image: none;
     }
