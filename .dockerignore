@@ -4,6 +4,8 @@
 *.png
 !images/*.png
 !favicon.png
+!favicon-96x96.png
+!apple-touch-icon.png
 !favicon.ico
 Dockerfile
 .gemini/
